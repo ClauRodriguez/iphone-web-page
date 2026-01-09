@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>/// Phone</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont,
+          "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 300;
+        letter-spacing: -0.05em;
+      }
+      .logo-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.2rem;
+        height: 1.5em;
+      }
+      .logo-bar {
+        width: 0.25em;
+        background: linear-gradient(180deg, #000000 0%, #606060 100%);
+        border-radius: 3px;
+        transform: skewX(-15deg);
+      }
+      .logo-bar:nth-child(1) {
+        height: 0.5em;
+      }
+      .logo-bar:nth-child(2) {
+        height: 0.8em;
+      }
+      .logo-bar:nth-child(3) {
+        height: 1.1em;
+      }
+      .logo-bar:nth-child(4) {
+        height: 1.4em;
+      }
+      .logo-text {
+        font-size: inherit;
+        font-weight: 300;
+        letter-spacing: -0.03em;
+      }
+      .nav-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: saturate(180%) blur(30px);
+        -webkit-backdrop-filter: saturate(180%) blur(30px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .hero-title {
+        font-size: clamp(4rem, 12vw, 9rem);
+        font-weight: 200;
+        letter-spacing: -0.06em;
+        line-height: 0.95;
+      }
+      .hero-subtitle {
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        line-height: 1.4;
+        color: #606060;
+      }
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        grid-auto-rows: auto;
+      }
+      .bento-item {
+        position: relative;
+        background: rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 24px;
+        padding: 2.5rem;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        overflow: hidden;
+      }
+      .bento-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.02) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+      .bento-item:hover::before {
+        opacity: 1;
+      }
+      .bento-item:hover {
+        transform: translateY(-8px);
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      }
+      .bento-item-large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .bento-item-tall {
+        grid-row: span 2;
+      }
+      .phone-float {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+      }
+      .phone-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .bento-item:hover .phone-image {
+        transform: scale(1.1) rotate(5deg);
+      }
+      .product-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 300;
+        letter-spacing: -0.04em;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+      .product-price {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 200;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        background: linear-gradient(135deg, #000000 0%, #606060 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .product-spec {
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: #808080;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .cta-button {
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #000000;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .cta-button:hover {
+        background: rgba(0, 0, 0, 0.1);
+        border-color: rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+      .whatsapp-button {
+        background: #25d366;
+        color: #ffffff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .whatsapp-button:hover {
+        background: #20ba5a;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+      }
+      .filter-btn {
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #808080;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 300;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .filter-btn:hover {
+        border-color: rgba(0, 0, 0, 0.2);
+        color: #000000;
+      }
+      .filter-btn.active {
+        background: rgba(0, 0, 0, 0.05);
+        border-color: rgba(0, 0, 0, 0.2);
+        color: #000000;
+      }
+      .section-spacing {
+        padding: 8rem 0;
+      }
+      @media (max-width: 768px) {
+        .bento-item-large {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+        .bento-item-tall {
+          grid-row: span 1;
+        }
+        .bento-grid {
+          grid-template-columns: 1fr;
+        }
+        .section-spacing {
+          padding: 4rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+      <div class="max-w-7xl mx-auto px-8 py-6">
+        <div class="flex justify-between items-center">
+          <div class="logo text-2xl">
+            <div class="logo-bars">
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+            </div>
+            <span class="logo-text">Phone</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a
+              href="productos.html"
+              class="text-sm font-light hover:opacity-70 transition"
+            >
+              Productos
+            </a>
+            <a href="https://wa.me/3512177985" class="whatsapp-button">
+              <i class="fab fa-whatsapp"></i>
+              <span>Consultar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section-spacing pt-32 px-8">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="hero-title mb-8">
+          iPhone.<br />
+          <span style="color: #606060">Al precio que quieres.</span>
+        </h1>
+        <p class="hero-subtitle max-w-3xl mx-auto mb-16">
+          Equipos seleccionados con garantía. Calidad premium, servicio
+          confiable.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <div
+            class="px-6 py-3 rounded-full bg-black/5 border border-black/10 flex items-center gap-2"
+          >
+            <i class="fas fa-shield-alt text-green-600"></i>
+            <span>Garantía incluida</span>
+          </div>
+          <div
+            class="px-6 py-3 rounded-full bg-black/5 border border-black/10 flex items-center gap-2"
+          >
+            <i class="fas fa-truck text-blue-600"></i>
+            <span>Envío rápido</span>
+          </div>
+          <div
+            class="px-6 py-3 rounded-full bg-black/5 border border-black/10 flex items-center gap-2"
+          >
+            <i class="fas fa-check-circle text-purple-600"></i>
+            <span>100% Original</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-spacing px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2
+          class="text-5xl md:text-7xl font-light mb-8 tracking-tight"
+          style="letter-spacing: -0.04em"
+        >
+          Descubre nuestra colección
+        </h2>
+        <p class="hero-subtitle mb-12 max-w-2xl mx-auto">
+          Explora todos nuestros modelos disponibles. Desde el iPhone 13 hasta
+          el iPhone 16 Pro Max. Todos con garantía certificada.
+        </p>
+        <a
+          href="productos.html"
+          class="cta-button text-lg px-12 py-4 inline-block"
+        >
+          Ver todos los iPhone
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-black/5 py-16 mt-24">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-12">
+          <div class="logo text-3xl justify-center mb-8">
+            <div class="logo-bars">
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+            </div>
+            <span class="logo-text">Phone</span>
+          </div>
+          <div class="flex justify-center gap-6 mb-8">
+            <a
+              href="https://wa.me/3512177985"
+              class="text-gray-500 hover:text-green-600 transition text-2xl"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-blue-600 transition text-2xl"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-pink-600 transition text-2xl"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="border-t border-black/5 pt-8">
+          <p class="text-center text-gray-500 text-sm font-light">
+            © 2026 /// Phone. Precios sujetos a cambios sin previo aviso.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
