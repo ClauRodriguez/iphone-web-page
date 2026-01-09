@@ -435,4 +435,43 @@ body.dark-mode .dark-mode-toggle:hover {
   .section-spacing {
     padding: 4rem 0;
   }
+
+  /* Navigation responsive */
+  .nav-glass {
+    padding: 1rem 0;
+  }
+
+  .nav-glass .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .nav-glass .flex {
+    gap: 0.5rem;
+  }
+
+  /* WhatsApp button responsive */
+  .whatsapp-button {
+    padding: 0.75rem;
+    min-width: auto;
+  }
+
+  .whatsapp-button span {
+    display: none;
+  }
+
+  .whatsapp-button i {
+    margin: 0;
+  }
+
+  /* Hide text links on mobile, show only icons */
+  .nav-glass a.text-sm {
+    display: none;
+  }
+
+  /* Dark mode toggle responsive */
+  .dark-mode-toggle {
+    padding: 0.5rem;
+    min-width: auto;
+  }
 }
