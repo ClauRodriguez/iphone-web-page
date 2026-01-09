@@ -18,6 +18,10 @@ Tienda online minimalista y premium de iPhone con diseño inspirado en Apple/Tes
 iphone-web-page/
 ├── Index.html          # Landing page principal
 ├── productos.html      # Página de catálogo de productos
+├── css/
+│   └── styles.css     # Estilos compartidos
+├── js/
+│   └── products.js     # Lógica de productos y filtros
 └── README.md          # Este archivo
 ```
 
@@ -88,12 +92,14 @@ Luego abre: `http://localhost:8000`
 ## 📝 Personalización
 
 ### Cambiar número de WhatsApp
-Busca y reemplaza `3512177985` en ambos archivos HTML:
-- `Index.html`
-- `productos.html`
+Edita la constante `WHATSAPP_NUMBER` en `js/products.js`:
+
+```javascript
+const WHATSAPP_NUMBER = "3512177985";
+```
 
 ### Agregar/Modificar Productos
-Edita el array `productos` en `productos.html`:
+Edita el array `productos` en `js/products.js`:
 
 ```javascript
 const productos = [
@@ -110,7 +116,11 @@ const productos = [
 ```
 
 ### Cambiar Colores
-Los colores principales están en las variables CSS dentro de `<style>` en cada archivo HTML.
+Los colores principales están en `css/styles.css`. Puedes modificar:
+- Colores de fondo: `background-color` en `body`
+- Colores de texto: `color` en `body` y clases específicas
+- Colores de botones: `.cta-button`, `.whatsapp-button`
+- Gradientes: `.logo-bar`, `.product-price`
 
 ## 🚀 Despliegue
 
