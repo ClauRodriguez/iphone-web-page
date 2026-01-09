@@ -28,12 +28,14 @@ iphone-web-page/
 ## 🎨 Páginas
 
 ### Index.html (Landing Page)
+
 - Hero section con mensaje principal
 - Badges de beneficios (Garantía, Envío, Originalidad)
 - CTA para ver productos
 - Footer con redes sociales
 
 ### productos.html (Catálogo)
+
 - Header con título
 - Sistema de filtros por modelo
 - Bento Grid con todos los productos
@@ -65,12 +67,14 @@ Todos los modelos disponibles en **128GB** de almacenamiento.
 ## 🔧 Configuración
 
 ### Requisitos
+
 - Navegador web moderno
 - Conexión a internet (para cargar imágenes de Apple CDN)
 
 ### Instalación Local
 
 1. Clona el repositorio:
+
 ```bash
 git clone https://github.com/ClauRodriguez/iphone-web-page.git
 ```
@@ -92,6 +96,7 @@ Luego abre: `http://localhost:8000`
 ## 📝 Personalización
 
 ### Cambiar número de WhatsApp
+
 Edita la constante `WHATSAPP_NUMBER` en `js/products.js`:
 
 ```javascript
@@ -99,6 +104,7 @@ const WHATSAPP_NUMBER = "3512177985";
 ```
 
 ### Agregar/Modificar Productos
+
 Edita el array `productos` en `js/products.js`:
 
 ```javascript
@@ -116,7 +122,9 @@ const productos = [
 ```
 
 ### Cambiar Colores
+
 Los colores principales están en `css/styles.css`. Puedes modificar:
+
 - Colores de fondo: `background-color` en `body`
 - Colores de texto: `color` en `body` y clases específicas
 - Colores de botones: `.cta-button`, `.whatsapp-button`
