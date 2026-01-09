@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/canje.css" />
+    <title>Plan Canje - /// Phone</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+      <div class="max-w-7xl mx-auto px-8 py-6">
+        <div class="flex justify-between items-center">
+          <a href="Index.html" class="logo text-2xl">
+            <div class="logo-bars">
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+            </div>
+            <span class="logo-text">Phone</span>
+          </a>
+          <div class="flex items-center gap-4">
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
+            <a
+              href="Index.html"
+              class="text-sm font-light hover:opacity-70 transition"
+            >
+              Inicio
+            </a>
+            <a
+              href="productos.html"
+              class="text-sm font-light hover:opacity-70 transition"
+            >
+              Productos
+            </a>
+            <a href="https://wa.me/3512177985" class="whatsapp-button">
+              <i class="fab fa-whatsapp"></i>
+              <span>Consultar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="canje-hero pt-32 pb-16 px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="canje-title mb-6">Plan Canje</h1>
+        <p class="canje-subtitle">
+          Cambia tu iPhone usado por uno nuevo. Calcula tu ahorro al instante.
+        </p>
+      </div>
+    </section>
+
+    <!-- Plan Canje Section -->
+    <section class="canje-section px-8 pb-16">
+      <div class="max-w-6xl mx-auto">
+        <div class="canje-container">
+          <!-- Paso 1: Tu Equipo -->
+          <div class="canje-paso">
+            <div class="canje-paso-header">
+              <h2 class="canje-paso-title">Tu equipo</h2>
+            </div>
+            <p class="canje-paso-description">
+              Selecciona el modelo de iPhone que deseas entregar
+            </p>
+            <select
+              id="equipo-usado"
+              class="canje-select"
+              aria-label="Selecciona tu iPhone usado"
+            >
+              <option value="">Selecciona un modelo</option>
+            </select>
+          </div>
+
+          <!-- Separador Visual -->
+          <div class="canje-separator">
+            <div class="canje-bars">
+              <div class="canje-bar"></div>
+              <div class="canje-bar"></div>
+              <div class="canje-bar"></div>
+              <div class="canje-bar"></div>
+            </div>
+          </div>
+
+          <!-- Paso 2: Tu Nuevo iPhone -->
+          <div class="canje-paso">
+            <div class="canje-paso-header">
+              <h2 class="canje-paso-title">Tu nuevo iPhone</h2>
+            </div>
+            <p class="canje-paso-description">
+              Elige el modelo superior que deseas adquirir
+            </p>
+            <select
+              id="equipo-nuevo"
+              class="canje-select"
+              aria-label="Selecciona tu nuevo iPhone"
+            >
+              <option value="">Selecciona un modelo</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Resumen de Cálculo -->
+        <div id="resumen-card" class="canje-resumen" style="display: none">
+          <h3 class="canje-resumen-title">Resumen</h3>
+          <div class="canje-resumen-content">
+            <div class="canje-resumen-item">
+              <span class="canje-resumen-label">Precio del nuevo</span>
+              <span id="precio-nuevo" class="canje-resumen-value">$0 USD</span>
+            </div>
+            <div class="canje-resumen-item">
+              <span class="canje-resumen-label">Valor de tu usado</span>
+              <span id="valor-usado" class="canje-resumen-value">$0 USD</span>
+            </div>
+            <div class="canje-resumen-divider"></div>
+            <div class="canje-resumen-item canje-resumen-total">
+              <span class="canje-resumen-label">Total a pagar</span>
+              <span id="total-pagar" class="canje-resumen-value">$0 USD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="canje-cta-container">
+          <button id="btn-cotizar" class="canje-cta-button">
+            <i class="fab fa-whatsapp"></i>
+            <span>Cotizar por WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-black/5 py-16 px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div class="logo text-xl">
+            <div class="logo-bars">
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+              <div class="logo-bar"></div>
+            </div>
+            <span class="logo-text">Phone</span>
+          </div>
+          <div class="flex gap-6">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="text-gray-500 hover:text-green-600 transition text-2xl"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://wa.me/3512177985"
+              target="_blank"
+              class="text-gray-500 hover:text-blue-600 transition text-2xl"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="text-gray-500 hover:text-pink-600 transition text-2xl"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+        <div class="border-t border-black/5 pt-8">
+          <p class="text-center text-gray-500 text-sm font-light">
+            © 2026 /// Phone. Precios sujetos a cambios sin previo aviso.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/dark-mode.js"></script>
+    <script src="js/canje.js"></script>
+  </body>
+</html>
