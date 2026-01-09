@@ -49,8 +49,7 @@ const productos = [
     nombre: "iPhone 14 Pro",
     precio: 550,
     modelo: "14",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-select-202209-deeppurple?wid=470&hei=556&fmt=png-alpha&.v=1663703841896",
+    imagen: "./images/iphone-14-pro.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
@@ -76,8 +75,7 @@ const productos = [
     nombre: "iPhone 15 Pro",
     precio: 680,
     modelo: "15",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-naturaltitanium?wid=470&hei=556&fmt=png-alpha&.v=1693009279096",
+    imagen: "./images/iphone-15-pro.jpeg",
     almacenamiento: "128GB",
     featured: true,
   },
