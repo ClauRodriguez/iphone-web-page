@@ -22,8 +22,7 @@ const productos = [
     nombre: "iPhone 13 Pro",
     precio: 470,
     modelo: "13",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-finish-select-202207-sierra-blue?wid=470&hei=556&fmt=png-alpha&.v=1656703841896",
+    imagen: "./images/iphone-13-pro.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
@@ -57,8 +56,7 @@ const productos = [
     nombre: "iPhone 14 Pro Max",
     precio: 580,
     modelo: "14",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-finish-select-202209-deeppurple?wid=470&hei=556&fmt=png-alpha&.v=1663703841896",
+    imagen: "./images/iphone-14-pro-max.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
@@ -66,8 +64,7 @@ const productos = [
     nombre: "iPhone 15",
     precio: 560,
     modelo: "15",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=470&hei=556&fmt=png-alpha&.v=1693009279096",
+    imagen: "./images/iphone-15.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
@@ -92,8 +89,7 @@ const productos = [
     nombre: "iPhone 16 Pro",
     precio: 890,
     modelo: "16",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-naturaltitanium?wid=470&hei=556&fmt=png-alpha&.v=1726616100000",
+    imagen: "./images/iphone-16-pro.jpeg",
     almacenamiento: "128GB",
     featured: true,
   },
