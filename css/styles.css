@@ -598,9 +598,9 @@ body.dark-mode .nav-glass a.plan-canje-link:hover {
     display: none;
   }
 
-  /* Mobile Menu Toggle Button */
+  /* Show mobile menu toggle on mobile */
   .mobile-menu-toggle {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: space-around;
     width: 2rem;
@@ -610,6 +610,11 @@ body.dark-mode .nav-glass a.plan-canje-link:hover {
     cursor: pointer;
     padding: 0;
     z-index: 10;
+  }
+
+  /* Show mobile menu on mobile */
+  .mobile-menu {
+    display: block !important;
   }
 
   .mobile-menu-toggle:focus {
