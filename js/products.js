@@ -168,7 +168,18 @@ function renderProducts(filter = "all", containerId = "productos-container") {
       });
     }
 
-  filtered.forEach((item, index) => {
+    // Verificar si hay productos después del filtrado
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+          <p style="font-size: 1.25rem; color: #808080; margin-bottom: 1rem;">No se encontraron productos</p>
+          <p style="font-size: 0.875rem; color: #a0a0a0;">Intenta con otro filtro o búsqueda</p>
+        </div>
+      `;
+      return;
+    }
+
+    filtered.forEach((item, index) => {
     const isLarge = item.featured && index % 3 === 0;
     const isTall = item.featured && index % 4 === 1;
 
