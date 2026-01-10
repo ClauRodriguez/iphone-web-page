@@ -99,16 +99,44 @@ const productos = [
 const WHATSAPP_NUMBER = "3512177985";
 let currentFilter = "all";
 
+// Función para mostrar skeleton loaders
+function showSkeletonLoaders(containerId = "productos-container", count = 6) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = "";
+  for (let i = 0; i < count; i++) {
+    const skeleton = document.createElement("article");
+    skeleton.className = "bento-item skeleton-loader";
+    skeleton.setAttribute("aria-label", "Cargando producto");
+    skeleton.innerHTML = `
+      <div class="skeleton-image"></div>
+      <div class="skeleton-content">
+        <div class="skeleton-line skeleton-line-short"></div>
+        <div class="skeleton-line skeleton-line-medium"></div>
+        <div class="skeleton-line skeleton-line-long"></div>
+        <div class="skeleton-button"></div>
+      </div>
+    `;
+    container.appendChild(skeleton);
+  }
+}
+
 // Función para renderizar productos
 function renderProducts(filter = "all", containerId = "productos-container") {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  container.innerHTML = "";
-  const filtered =
-    filter === "all"
-      ? productos
-      : productos.filter((p) => p.modelo === filter);
+  // Mostrar skeleton loaders mientras se cargan los productos
+  showSkeletonLoaders(containerId, 6);
+
+  // Simular delay de carga (en producción esto sería el tiempo real de carga)
+  setTimeout(() => {
+    container.innerHTML = "";
+    const filtered =
+      filter === "all"
+        ? productos
+        : productos.filter((p) => p.modelo === filter);
 
   filtered.forEach((item, index) => {
     const isLarge = item.featured && index % 3 === 0;
@@ -167,16 +195,25 @@ function renderProducts(filter = "all", containerId = "productos-container") {
 function initFilters() {
   document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
+      // Add loading state
+      this.classList.add("loading");
+      
       document
         .querySelectorAll(".filter-btn")
         .forEach((b) => {
           b.classList.remove("active");
           b.setAttribute("aria-pressed", "false");
+          b.classList.remove("loading");
         });
       this.classList.add("active");
       this.setAttribute("aria-pressed", "true");
       currentFilter = this.dataset.filter;
-      renderProducts(currentFilter);
+      
+      // Render products with slight delay for smooth transition
+      setTimeout(() => {
+        renderProducts(currentFilter);
+        this.classList.remove("loading");
+      }, 100);
     });
     
     // Keyboard navigation support
