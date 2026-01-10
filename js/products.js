@@ -100,8 +100,6 @@ const WHATSAPP_NUMBER = "3512177985";
 let currentFilter = "all";
 let currentSearch = "";
 let currentSort = "default";
-let currentSearch = "";
-let currentSort = "default";
 
 // Función para mostrar skeleton loaders
 function showSkeletonLoaders(containerId = "productos-container", count = 6) {
@@ -221,6 +219,7 @@ function renderProducts(filter = "all", containerId = "productos-container") {
       card.style.transform = "translateY(0)";
     }, index * 100);
   });
+  }, 300); // Cerrar el setTimeout principal
 }
 
 // Inicializar filtros
