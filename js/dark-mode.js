@@ -9,9 +9,11 @@
     if (savedTheme === "true") {
       document.body.classList.add("dark-mode");
       updateToggleIcon(true);
+      updateToggleAria(true);
     } else {
       document.body.classList.remove("dark-mode");
       updateToggleIcon(false);
+      updateToggleAria(false);
     }
   }
 
@@ -24,6 +26,12 @@
     }
   }
 
+  // Update toggle aria-pressed attribute
+  function updateToggleAria(isDark) {
+    if (!toggleButton) return;
+    toggleButton.setAttribute("aria-pressed", isDark ? "true" : "false");
+  }
+
   // Toggle dark mode
   function toggleDarkMode() {
     const isDark = document.body.classList.contains("dark-mode");
@@ -31,10 +39,12 @@
       document.body.classList.remove("dark-mode");
       localStorage.setItem(DARK_MODE_KEY, "false");
       updateToggleIcon(false);
+      updateToggleAria(false);
     } else {
       document.body.classList.add("dark-mode");
       localStorage.setItem(DARK_MODE_KEY, "true");
       updateToggleIcon(true);
+      updateToggleAria(true);
     }
   }
 

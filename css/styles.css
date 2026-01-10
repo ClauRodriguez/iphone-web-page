@@ -5,6 +5,36 @@
   box-sizing: border-box;
 }
 
+/* Skip to content link for accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000000;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+body.dark-mode .skip-to-content {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode .skip-to-content:focus {
+  outline-color: #000000;
+}
+
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont,
     "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;

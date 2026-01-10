@@ -114,10 +114,12 @@ function renderProducts(filter = "all", containerId = "productos-container") {
     const isLarge = item.featured && index % 3 === 0;
     const isTall = item.featured && index % 4 === 1;
 
-    const card = document.createElement("div");
+    const card = document.createElement("article");
     card.className = `bento-item ${
       isLarge ? "bento-item-large" : isTall ? "bento-item-tall" : ""
     }`;
+    card.setAttribute("role", "listitem");
+    card.setAttribute("aria-label", `${item.nombre} ${item.almacenamiento} - $${item.precio} USD`);
     card.style.opacity = "0";
     card.style.transform = "translateY(30px)";
     card.innerHTML = `
@@ -126,10 +128,10 @@ function renderProducts(filter = "all", containerId = "productos-container") {
       }; margin-bottom: 2rem;">
         <img 
           src="${item.imagen}" 
-          alt="${item.nombre}"
+          alt="${item.nombre} ${item.almacenamiento} - Precio: $${item.precio} USD"
           class="phone-image"
           loading="lazy"
-          onerror="this.parentElement.innerHTML='<div style='display: flex; align-items: center; justify-content: center; height: 100%; color: #404040;'><i class='fas fa-mobile-alt' style='font-size: 4rem;'></i></div>'"
+          onerror="this.parentElement.innerHTML='<div style='display: flex; align-items: center; justify-content: center; height: 100%; color: #404040;' aria-label='${item.nombre}'><i class='fas fa-mobile-alt' style='font-size: 4rem;' aria-hidden='true'></i></div>'"
         />
       </div>
       <div>
@@ -143,6 +145,9 @@ function renderProducts(filter = "all", containerId = "productos-container") {
       item.nombre
     )}"
           class="cta-button"
+          aria-label="Consultar disponibilidad de ${item.nombre}"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Consultar disponibilidad
         </a>
@@ -164,10 +169,22 @@ function initFilters() {
     btn.addEventListener("click", function () {
       document
         .querySelectorAll(".filter-btn")
-        .forEach((b) => b.classList.remove("active"));
+        .forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
+        });
       this.classList.add("active");
+      this.setAttribute("aria-pressed", "true");
       currentFilter = this.dataset.filter;
       renderProducts(currentFilter);
+    });
+    
+    // Keyboard navigation support
+    btn.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        this.click();
+      }
     });
   });
 }

@@ -43,8 +43,11 @@
     <title>Plan Canje iPhone - Cambia tu usado por uno nuevo | /// Phone</title>
   </head>
   <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+    
     <!-- Navigation -->
-    <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50" role="navigation" aria-label="Navegación principal">
       <div class="max-w-7xl mx-auto px-8 py-6">
         <div class="flex justify-between items-center">
           <a href="Index.html" class="logo text-2xl">
@@ -57,23 +60,36 @@
             <span class="logo-text">Phone</span>
           </a>
           <div class="flex items-center gap-4">
-            <button id="dark-mode-toggle" class="dark-mode-toggle">
-              <i class="fas fa-moon"></i>
+            <button 
+              id="dark-mode-toggle" 
+              class="dark-mode-toggle"
+              aria-label="Alternar modo oscuro"
+              aria-pressed="false"
+            >
+              <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
             <a
               href="Index.html"
               class="text-sm font-light hover:opacity-70 transition"
+              aria-label="Volver al inicio"
             >
               Inicio
             </a>
             <a
               href="productos.html"
               class="text-sm font-light hover:opacity-70 transition"
+              aria-label="Ver catálogo de productos"
             >
               Productos
             </a>
-            <a href="https://wa.me/3512177985" class="whatsapp-button">
-              <i class="fab fa-whatsapp"></i>
+            <a 
+              href="https://wa.me/3512177985" 
+              class="whatsapp-button"
+              aria-label="Consultar por WhatsApp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
               <span>Consultar</span>
             </a>
           </div>
@@ -82,14 +98,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="canje-hero pt-32 pb-16 px-8">
+    <main id="main-content" class="canje-hero pt-32 pb-16 px-8">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="canje-title mb-6">Plan Canje</h1>
         <p class="canje-subtitle">
           Cambia tu iPhone usado por uno nuevo. Calcula tu ahorro al instante.
         </p>
       </div>
-    </section>
+    </main>
 
     <!-- Plan Canje Section -->
     <section class="canje-section px-8 pb-16">
@@ -107,6 +123,7 @@
               id="equipo-usado"
               class="canje-select"
               aria-label="Selecciona tu iPhone usado"
+              aria-required="true"
             >
               <option value="">Selecciona un modelo</option>
             </select>
@@ -134,6 +151,7 @@
               id="equipo-nuevo"
               class="canje-select"
               aria-label="Selecciona tu nuevo iPhone"
+              aria-required="true"
             >
               <option value="">Selecciona un modelo</option>
             </select>
@@ -162,8 +180,12 @@
 
         <!-- CTA Button -->
         <div class="canje-cta-container">
-          <button id="btn-cotizar" class="canje-cta-button">
-            <i class="fab fa-whatsapp"></i>
+          <button 
+            id="btn-cotizar" 
+            class="canje-cta-button"
+            aria-label="Cotizar plan de canje por WhatsApp"
+          >
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
             <span>Cotizar por WhatsApp</span>
           </button>
         </div>
