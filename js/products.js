@@ -98,6 +98,8 @@ const productos = [
 // Configuración
 const WHATSAPP_NUMBER = "3512177985";
 let currentFilter = "all";
+let currentSearch = "";
+let currentSort = "default";
 
 // Función para mostrar skeleton loaders
 function showSkeletonLoaders(containerId = "productos-container", count = 6) {

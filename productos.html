@@ -176,15 +176,43 @@
       </div>
     </section>
 
-    <!-- Filter Section -->
+    <!-- Search and Filter Section -->
     <section class="px-8 mb-16">
       <div class="max-w-7xl mx-auto">
-        <div class="flex flex-wrap gap-3 justify-center">
-          <button class="filter-btn active" data-filter="all" aria-label="Mostrar todos los productos" aria-pressed="true">Todos</button>
-          <button class="filter-btn" data-filter="13" aria-label="Filtrar iPhone 13" aria-pressed="false">iPhone 13</button>
-          <button class="filter-btn" data-filter="14" aria-label="Filtrar iPhone 14" aria-pressed="false">iPhone 14</button>
-          <button class="filter-btn" data-filter="15" aria-label="Filtrar iPhone 15" aria-pressed="false">iPhone 15</button>
-          <button class="filter-btn" data-filter="16" aria-label="Filtrar iPhone 16" aria-pressed="false">iPhone 16</button>
+        <!-- Search Bar -->
+        <div class="mb-8">
+          <div class="max-w-md mx-auto relative">
+            <input
+              type="text"
+              id="product-search"
+              class="search-input"
+              placeholder="Buscar iPhone..."
+              aria-label="Buscar productos"
+            />
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          </div>
+        </div>
+        
+        <!-- Filter and Sort Controls -->
+        <div class="flex flex-wrap gap-4 justify-center items-center mb-6">
+          <div class="flex flex-wrap gap-3">
+            <button class="filter-btn active" data-filter="all" aria-label="Mostrar todos los productos" aria-pressed="true">Todos</button>
+            <button class="filter-btn" data-filter="13" aria-label="Filtrar iPhone 13" aria-pressed="false">iPhone 13</button>
+            <button class="filter-btn" data-filter="14" aria-label="Filtrar iPhone 14" aria-pressed="false">iPhone 14</button>
+            <button class="filter-btn" data-filter="15" aria-label="Filtrar iPhone 15" aria-pressed="false">iPhone 15</button>
+            <button class="filter-btn" data-filter="16" aria-label="Filtrar iPhone 16" aria-pressed="false">iPhone 16</button>
+          </div>
+          
+          <!-- Sort Dropdown -->
+          <div class="relative">
+            <select id="sort-select" class="sort-select" aria-label="Ordenar productos">
+              <option value="default">Ordenar por</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="name-asc">Nombre: A-Z</option>
+              <option value="name-desc">Nombre: Z-A</option>
+            </select>
+          </div>
         </div>
       </div>
     </section>
