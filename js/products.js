@@ -100,6 +100,8 @@ const WHATSAPP_NUMBER = "3512177985";
 let currentFilter = "all";
 let currentSearch = "";
 let currentSort = "default";
+let currentSearch = "";
+let currentSort = "default";
 
 // Función para mostrar skeleton loaders
 function showSkeletonLoaders(containerId = "productos-container", count = 6) {
@@ -135,10 +137,38 @@ function renderProducts(filter = "all", containerId = "productos-container") {
   // Simular delay de carga (en producción esto sería el tiempo real de carga)
   setTimeout(() => {
     container.innerHTML = "";
-    const filtered =
+    let filtered =
       filter === "all"
         ? productos
         : productos.filter((p) => p.modelo === filter);
+
+    // Aplicar búsqueda
+    if (currentSearch.trim() !== "") {
+      const searchLower = currentSearch.toLowerCase();
+      filtered = filtered.filter(
+        (p) =>
+          p.nombre.toLowerCase().includes(searchLower) ||
+          p.modelo.includes(searchLower)
+      );
+    }
+
+    // Aplicar ordenamiento
+    if (currentSort !== "default") {
+      filtered = [...filtered].sort((a, b) => {
+        switch (currentSort) {
+          case "price-asc":
+            return a.precio - b.precio;
+          case "price-desc":
+            return b.precio - a.precio;
+          case "name-asc":
+            return a.nombre.localeCompare(b.nombre);
+          case "name-desc":
+            return b.nombre.localeCompare(a.nombre);
+          default:
+            return 0;
+        }
+      });
+    }
 
   filtered.forEach((item, index) => {
     const isLarge = item.featured && index % 3 === 0;
@@ -228,8 +258,50 @@ function initFilters() {
   });
 }
 
+// Inicializar búsqueda
+function initSearch() {
+  const searchInput = document.getElementById("product-search");
+  if (!searchInput) return;
+
+  let searchTimeout;
+  searchInput.addEventListener("input", function (e) {
+    clearTimeout(searchTimeout);
+    currentSearch = e.target.value;
+
+    // Debounce: esperar 300ms después de que el usuario deje de escribir
+    searchTimeout = setTimeout(() => {
+      renderProducts(currentFilter);
+    }, 300);
+  });
+
+  // Limpiar búsqueda con Escape
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      this.value = "";
+      currentSearch = "";
+      renderProducts(currentFilter);
+    }
+  });
+}
+
+// Inicializar ordenamiento
+function initSort() {
+  const sortSelect = document.getElementById("sort-select");
+  if (!sortSelect) return;
+
+  sortSelect.addEventListener("change", function (e) {
+    currentSort = e.target.value;
+    renderProducts(currentFilter);
+  });
+}
+
 // Inicializar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", function () {
   initFilters();
-  renderProducts();
+  initSearch();
+  initSort();
+  // Render products with a small delay to show skeleton loaders
+  setTimeout(() => {
+    renderProducts();
+  }, 300);
 });
