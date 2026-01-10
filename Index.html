@@ -77,7 +77,9 @@
             </div>
             <span class="logo-text">Phone</span>
           </a>
-          <div class="flex items-center gap-4">
+          
+          <!-- Desktop Navigation -->
+          <div class="nav-desktop flex items-center gap-4">
             <button 
               id="dark-mode-toggle" 
               class="dark-mode-toggle"
@@ -111,6 +113,51 @@
               <span>Consultar</span>
             </a>
           </div>
+          
+          <!-- Mobile Menu Button -->
+          <button 
+            id="mobile-menu-toggle" 
+            class="mobile-menu-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-content">
+          <a
+            href="productos.html"
+            class="mobile-menu-link"
+            aria-label="Ver catálogo de productos"
+          >
+            <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+            <span>Productos</span>
+          </a>
+          <a
+            href="canje.html"
+            class="mobile-menu-link"
+            aria-label="Calcular plan de canje de iPhone"
+          >
+            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+            <span>Plan Canje</span>
+          </a>
+          <a 
+            href="https://wa.me/3512177985" 
+            class="mobile-menu-link whatsapp-link"
+            aria-label="Consultar por WhatsApp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span>Consultar por WhatsApp</span>
+          </a>
         </div>
       </div>
     </nav>
@@ -222,5 +269,6 @@
       </div>
     </footer>
     <script src="js/dark-mode.js"></script>
+    <script src="js/mobile-menu.js"></script>
   </body>
 </html>
