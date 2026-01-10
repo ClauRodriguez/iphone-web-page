@@ -159,6 +159,36 @@ body.dark-mode .dark-mode-toggle:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* Plan Canje Link - Base Styles */
+.nav-glass a.plan-canje-link {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-glass a.plan-canje-link:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+
+body.dark-mode .nav-glass a.plan-canje-link {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+body.dark-mode .nav-glass a.plan-canje-link:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
 /* Logo */
 .logo {
   display: flex;
@@ -472,19 +502,9 @@ body.dark-mode .dark-mode-toggle:hover {
   /* Show Plan Canje link on mobile - important feature */
   .nav-glass a.plan-canje-link {
     display: inline-block !important;
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
     font-size: 0.75rem;
-    font-weight: 400;
+    padding: 0.5rem 0.75rem;
     white-space: nowrap;
-  }
-
-  body.dark-mode .nav-glass a.plan-canje-link {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
   }
 
   /* Dark mode toggle responsive */
