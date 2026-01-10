@@ -277,6 +277,11 @@ body.dark-mode .nav-glass a.plan-canje-link:hover {
   display: none;
 }
 
+/* Hide mobile menu on desktop */
+.mobile-menu {
+  display: none;
+}
+
 /* Show desktop navigation on desktop */
 .nav-desktop {
   display: flex;
