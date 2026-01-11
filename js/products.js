@@ -39,8 +39,7 @@ const productos = [
     nombre: "iPhone 13 Pro Max",
     precio: 540,
     modelo: "13",
-    imagen:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-finish-select-202207-sierra-blue?wid=470&hei=556&fmt=png-alpha&.v=1656703841896",
+    imagen: "./images/iphone-13-pro-max.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
