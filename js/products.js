@@ -39,7 +39,7 @@ const productos = [
     nombre: "iPhone 13 Pro Max",
     precio: 540,
     modelo: "13",
-    imagen: "./images/iphone-13-pro-max..png",
+    imagen: "./images/iphone-13-pro-max.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
