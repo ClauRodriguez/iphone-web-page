@@ -39,7 +39,7 @@ const productos = [
     nombre: "iPhone 13 Pro Max",
     precio: 540,
     modelo: "13",
-    imagen: "./images/iphone-13-pro-max.png",
+    imagen: "./images/iphone-13-pro-max.jpeg",
     almacenamiento: "128GB",
     featured: false,
   },
@@ -179,27 +179,34 @@ function renderProducts(filter = "all", containerId = "productos-container") {
     }
 
     filtered.forEach((item, index) => {
-    const isLarge = item.featured && index % 3 === 0;
-    const isTall = item.featured && index % 4 === 1;
+      const isLarge = item.featured && index % 3 === 0;
+      const isTall = item.featured && index % 4 === 1;
 
-    const card = document.createElement("article");
-    card.className = `bento-item ${
-      isLarge ? "bento-item-large" : isTall ? "bento-item-tall" : ""
-    }`;
-    card.setAttribute("role", "listitem");
-    card.setAttribute("aria-label", `${item.nombre} ${item.almacenamiento} - $${item.precio} USD`);
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px)";
-    card.innerHTML = `
+      const card = document.createElement("article");
+      card.className = `bento-item ${
+        isLarge ? "bento-item-large" : isTall ? "bento-item-tall" : ""
+      }`;
+      card.setAttribute("role", "listitem");
+      card.setAttribute(
+        "aria-label",
+        `${item.nombre} ${item.almacenamiento} - $${item.precio} USD`
+      );
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px)";
+      card.innerHTML = `
       <div class="phone-float" style="height: ${
         isLarge ? "400px" : isTall ? "350px" : "250px"
       }; margin-bottom: 2rem;">
         <img 
           src="${item.imagen}" 
-          alt="${item.nombre} ${item.almacenamiento} - Precio: $${item.precio} USD"
+          alt="${item.nombre} ${item.almacenamiento} - Precio: $${
+        item.precio
+      } USD"
           class="phone-image"
           loading="lazy"
-          onerror="this.parentElement.innerHTML='<div style='display: flex; align-items: center; justify-content: center; height: 100%; color: #404040;' aria-label='${item.nombre}'><i class='fas fa-mobile-alt' style='font-size: 4rem;' aria-hidden='true'></i></div>'"
+          onerror="this.parentElement.innerHTML='<div style='display: flex; align-items: center; justify-content: center; height: 100%; color: #404040;' aria-label='${
+            item.nombre
+          }'><i class='fas fa-mobile-alt' style='font-size: 4rem;' aria-hidden='true'></i></div>'"
         />
       </div>
       <div>
@@ -210,8 +217,8 @@ function renderProducts(filter = "all", containerId = "productos-container") {
         </div>
         <a
           href="https://wa.me/${WHATSAPP_NUMBER}?text=Hola, me interesa el ${encodeURIComponent(
-      item.nombre
-    )}"
+        item.nombre
+      )}"
           class="cta-button"
           aria-label="Consultar disponibilidad de ${item.nombre}"
           target="_blank"
@@ -221,14 +228,14 @@ function renderProducts(filter = "all", containerId = "productos-container") {
         </a>
       </div>
     `;
-    container.appendChild(card);
+      container.appendChild(card);
 
-    setTimeout(() => {
-      card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    }, index * 100);
-  });
+      setTimeout(() => {
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, index * 100);
+    });
   }, 300); // Cerrar el setTimeout principal
 }
 
@@ -238,25 +245,23 @@ function initFilters() {
     btn.addEventListener("click", function () {
       // Add loading state
       this.classList.add("loading");
-      
-      document
-        .querySelectorAll(".filter-btn")
-        .forEach((b) => {
-          b.classList.remove("active");
-          b.setAttribute("aria-pressed", "false");
-          b.classList.remove("loading");
-        });
+
+      document.querySelectorAll(".filter-btn").forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+        b.classList.remove("loading");
+      });
       this.classList.add("active");
       this.setAttribute("aria-pressed", "true");
       currentFilter = this.dataset.filter;
-      
+
       // Render products with slight delay for smooth transition
       setTimeout(() => {
         renderProducts(currentFilter);
         this.classList.remove("loading");
       }, 100);
     });
-    
+
     // Keyboard navigation support
     btn.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
